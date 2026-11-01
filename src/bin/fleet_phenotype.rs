@@ -63,7 +63,7 @@ fn shannon(counts: &HashMap<String, u64>) -> f64 {
 
 struct Specimen {
     ua: String,
-    host: String,
+    _host: String,
     uri: String,
     sz: u64,
     ae: String,
@@ -133,7 +133,7 @@ fn analyze(log_path: &str) -> serde_json::Value {
             let sz = d.get("size").and_then(|v| v.as_u64()).unwrap_or(0);
 
             specimens.entry(ip).or_default().push(Specimen {
-                ua, host, uri, sz, ae, al, sec_plat, n_hdrs, has_sec, tls_proto, referer,
+                ua, _host: host, uri, sz, ae, al, sec_plat, n_hdrs, has_sec, tls_proto, referer,
             });
         }
     }
